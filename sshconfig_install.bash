@@ -9,6 +9,12 @@ export sshdfile_backup='/etc/ssh/sshd_config_raw'$today
 if [ -e $sshdfile_backup ]; then
 cp $sshdfile $sshdfile_backup
 fi
+declare myaccount=`whoami`
+if [ $myaccount != "root" ]; then
+echo 'Please executed installation with root authority !!!'
+echo ' '
+exit
+fi
 
 #
 #######
@@ -21,6 +27,13 @@ if read -t 6 -p 'sshd port number: [Default is 22] ' sshport; then
 else
      declare sshport=22
   echo  -e "\nport: 22"
+fi
+
+if [ $sshport != 22 ]
+then  # selinux allow other port
+  semanage port -a -t ssh_port_t -p tcp $sshport
+  iptables -A INPUT -p tcp -dport $sshport -j ACCEPT
+  iptables-save
 fi
 
 echo 'Port '$sshport > $sshdfile
