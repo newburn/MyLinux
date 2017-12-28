@@ -1,6 +1,8 @@
 #!/bin/bash
 #author: Su, Chin-Tsai (So Jin Zai)
-#Data: 2017/12/19
+#Date: 2017/12/19 
+#Version: 0.1
+#Date: 2017/12/28
 #Version: 0.3
 #
 
