@@ -1,20 +1,28 @@
 #!/bin/bash
 #author: Su, Chin-Tsai (So Jin Zai)
 #Data: 2017/12/19
-#Version: 0.1
+#Version: 0.3
 #
-export today=`date +%Y%m%d`
-export sshdfile='/etc/ssh/sshd_config'
-export sshdfile_backup='/etc/ssh/sshd_config_raw'$today
-if [ -e $sshdfile_backup ]; then
-cp $sshdfile $sshdfile_backup
-fi
+
 declare myaccount=`whoami`
 if [ $myaccount != "root" ]; then
 echo 'Please executed installation with root authority !!!'
 echo ' '
 exit
 fi
+
+export today=`date +%Y%m%d`
+export sshdfile='/etc/ssh/sshd_config'
+export sshdfile_backup='/etc/ssh/sshd_config_raw'$today
+if [ -e $sshdfile_backup ]; then
+cp $sshdfile $sshdfile_backup
+echo -n 'The raw configuration file is copy to $sshdfile_backup .'
+sleep 2
+fi
+
+echo 'sshd Auto-Configuration Process Loading...'
+sleep 2
+
 
 #
 #######
