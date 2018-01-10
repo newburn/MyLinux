@@ -14,14 +14,15 @@ if [ $myaccount != "root" ]; then
 fi
 
 
-#echo -n 'Installing rpmfusion-free and rpmfusion-nofree repository...'
-#yum -y install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm >> /dev/null
-#yum -y install https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm >> /dev/null
-#echo ''
-
-echo -n 'Installing nux-dextop repository...'
-yum -y install http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm >> /dev/null
+echo -n 'Installing rpmfusion-free and rpmfusion-nofree repository...'
+yum -y install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm >> /dev/null
+yum -y install https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm >> /dev/null
 echo ''
+
+# nux-dextop maybe an old version
+#echo -n 'Installing nux-dextop repository...'
+#yum -y install http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm >> /dev/null
+#echo ''
 
 echo -n "Installing adobe repository..."
 yum -y install http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm >> /dev/null
